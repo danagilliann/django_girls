@@ -3,6 +3,8 @@ from django.utils import timezone
 from .models import Post
 from .forms import PostForm
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
 
 def post_list(request):
     posts = Post.objects.filter(
@@ -13,6 +15,7 @@ def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
 
+@login_required
 def post_new(request):
     form = PostForm()
 
@@ -42,3 +45,4 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
+
