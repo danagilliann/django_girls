@@ -7,16 +7,12 @@
       <h1><a href="/">This is Kewl</a></h1>
     </div>
     
-    <div>
-      <p>Published at some aweome date</p>
-      <h2><a href="/">Post #1</a></h2>
-      <p>Hodor! Hodor hodor, HODOR hodor, hodor hodor… Hodor hodor hodor hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor… Hodor hodor hodor?! Hodor hodor, hodor. Hodor HODOR hodor, hodor hodor hodor! Hodor, hodor hodor hodor - hodor. Hodor. Hodor hodor hodor hodor hodor hodor hodor! Hodor, HODOR hodor, hodor hodor hodor hodor; hodor hodor. Hodor hodor HODOR! Hodor hodor hodor hodor hodor, hodor, hodor hodor.</p>
-    </div>
-
-    <div>
-      <p>Published at some other awesome date</p>
-      <h2><a href="/">Post #2</a></h2>
-      <p>Vestibulum mollis pellentesque hendrerit. Sed faucibus venenatis accumsan. Quisque ut gravida metus. Nam sed neque magna, in fermentum ligula. Praesent a diam tincidunt odio twat consequat. Phasellus aliquam justo at arcu gravida porttitor.</p>
-    </div>
+    {% for post in posts %}
+      <div>
+        <p>Published on {{ post.published_date }} </p>
+        <h1><a href="/">{{ post.title }}</a></h1>
+        <p>{{ post.text | linebreaks}}</p>
+      </div>
+    {% endfor %}
   </body>
 </html>
